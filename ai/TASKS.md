@@ -87,7 +87,7 @@
 
 ### T-013 T-005 교차 리뷰
 
-- 담당: gemini · 상태: todo · 의존: T-005
+- 담당: gemini · 상태: done (통과) · 의존: T-005
 - 내용: `AGENTS.md` 7장 체크리스트로 T-005 변경(`site/index.html` 메타 태그, `site/og.png`, `site/favicon.svg`)을 리뷰한다. 결과는 `ai/reviews/T-005.md`
 - 수락 기준: "통과 / 수정 요청 / 사람 판단 필요" 중 하나로 결론
 
