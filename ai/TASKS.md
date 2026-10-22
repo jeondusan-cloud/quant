@@ -1,7 +1,7 @@
 # 작업 보드
 
 - 상태: `todo` → `doing` → `review` → `done` (막히면 `blocked`)
-- 담당: `human` / `claude` / `gemini` / `미정`
+- 담당: `human` / `gemini` / `claude (선택)` / `미정`
 - 규칙: 자기 작업 블록만 고치고 바로 커밋한다. 새 작업은 맨 아래에 다음 번호로 추가한다. → [AGENTS.md](../AGENTS.md)
 
 ---
@@ -15,7 +15,7 @@
 ### T-001 프로젝트 이름 정하기
 
 - 담당: human · 상태: todo · 의존: 없음
-- 내용: 창립자 후보(파이오니어, Ambitious, The Beginning, Dream College 등)와 새 후보를 비교한 [이름 후보 검토](../docs/06-naming.md)를 보고 결정한다. 정해지면 Claude에게 "이름을 ___로 바꿔 줘"라고 말하면 문서·사이트·저장소 이름 변경까지 처리한다.
+- 내용: 창립자 후보(파이오니어, Ambitious, The Beginning, Dream College 등)와 새 후보를 비교한 [이름 후보 검토](../docs/06-naming.md)를 보고 결정한다. 정해지면 AI에게 "이름을 ___로 바꿔 줘"라고 말하면 문서·사이트·저장소 이름 변경까지 처리한다.
 - 수락 기준: `ai/DECISIONS.md` D-004가 `확정`으로 바뀐다
 
 ### T-002 창립자 꿈 선언서 쓰기
@@ -32,7 +32,7 @@
 
 ### T-004 참가 신청 폼 연결
 
-- 담당: human (+ claude/gemini) · 상태: todo · 의존: T-010
+- 담당: human (+ gemini) · 상태: todo · 의존: T-010
 - 내용: 사람이 [폼 초안](../docs/templates/join-form.md)대로 Google Forms를 만들어 주소를 AI에게 준다. AI가 `site/index.html`의 `CONFIG.joinUrl`에 넣는다. 배포는 자동이다.
 - 수락 기준: 휴대폰에서 공개 주소로 접속해 신청 버튼이 폼으로 연결된다
 
@@ -40,7 +40,7 @@
 
 - 담당: claude (창립자 위임으로 대신 진행) · 상태: review · 의존: 없음
 - 내용: 360px/768px/1280px에서 레이아웃 점검, 카카오톡 공유 시 보이는 미리보기 이미지(`site/og.png`, 1200x630)와 메타 태그 추가
-- 진행: 미리보기 이미지·메타 태그·파비콘 추가, 360/1280px 가로 스크롤 없음 확인. 남은 것: 실제 휴대폰에서 복사 버튼과 카톡 미리보기 확인(사람), 교차 리뷰(T-013)
+- 진행: 미리보기 이미지·메타 태그·파비콘 추가, 360/1280px 가로 스크롤 없음 확인. 남은 것: 실제 휴대폰에서 복사 버튼과 카톡 미리보기 확인(사람), 교차 리뷰(T-013 완료)
 - 수락 기준: 가로 스크롤 없음, 꿈 선언서 작성기의 복사 버튼이 iOS Safari·안드로이드 크롬에서 동작, 카카오톡 링크 미리보기에 제목·설명·이미지가 보임
 
 ### T-006 "어떻게의 밤" 인쇄물
@@ -51,14 +51,14 @@
 
 ### T-007 대한민국 문샷 지도 v0 틀
 
-- 담당: claude · 상태: todo · 의존: T-003 (첫 모임 이후가 좋음)
-- 내용: `docs/02-strategy.md` 7장의 분야별로 "세계 최전선 / 한국의 위치 / 병목 / 매달린 사람" 틀과 조사 질문을 만든다. 조사 자체는 gemini 작업으로 쪼갠다.
-- 수락 기준: `docs/moonshot-map/README.md`와 분야별 빈 틀, gemini 조사 작업이 TASKS에 추가됨
+- 담당: gemini · 상태: todo · 의존: T-003 (첫 모임 이후가 좋음)
+- 내용: `docs/02-strategy.md` 7장의 분야별로 "세계 최전선 / 한국의 위치 / 병목 / 매달린 사람" 틀과 조사 질문을 만든다. 조사 자체는 작은 작업으로 쪼갠다.
+- 수락 기준: `docs/moonshot-map/README.md`와 분야별 빈 틀, 조사 작업이 TASKS에 추가됨
 
 ### T-008 MVP 아키텍처 확정
 
-- 담당: claude · 상태: blocked · 의존: Phase 0 졸업 (`docs/02-strategy.md` 4장)
-- 내용: `docs/04-product-mvp.md`를 바탕으로 스키마, RLS 정책, 폴더 구조를 확정하고 구현 작업을 gemini용으로 쪼갠다
+- 담당: gemini · 상태: blocked · 의존: Phase 0 졸업 (`docs/02-strategy.md` 4장)
+- 내용: `docs/04-product-mvp.md`를 바탕으로 스키마, RLS 정책, 폴더 구조를 확정하고 구현 작업을 작은 단위로 쪼갠다
 - 수락 기준: 사람이 승인한 설계 문서와 구현 작업 목록
 
 ### T-009 창립자 90일 공개 도전
@@ -91,8 +91,14 @@
 - 내용: `AGENTS.md` 7장 체크리스트로 T-005 변경(`site/index.html` 메타 태그, `site/og.png`, `site/favicon.svg`)을 리뷰한다. 결과는 `ai/reviews/T-005.md`
 - 수락 기준: "통과 / 수정 요청 / 사람 판단 필요" 중 하나로 결론
 
-### T-014 내 컴퓨터에서 Claude 쓰기 설정
+### T-014 내 컴퓨터에서 Claude 쓰기 설정 (선택 사항)
 
-- 담당: human · 상태: todo · 의존: Antigravity 0번 프롬프트 (저장소 폴더 준비)
-- 내용: [사용 설명서 6장](../docs/00-start-here.md#6-내-컴퓨터로컬에서-claude-쓰기)대로 데스크톱 앱의 Code 탭에서 저장소 폴더를 연다
-- 수락 기준: 로컬 Claude가 1번 프롬프트로 최근 인수인계 파일을 요약한다
+- 담당: human · 상태: todo (선택 사항, D-012) · 의존: Antigravity 0번 프롬프트 (저장소 폴더 준비)
+- 내용: Claude를 따로 부를 일이 있을 때만 [사용 설명서 6장](../docs/00-start-here.md#6-내-컴퓨터로컬에서-claude-쓰기-선택-사항)대로 데스크톱 앱의 Code 탭에서 저장소 폴더(`C:\quant`)를 연다
+- 수락 기준: 필요할 때 로컬 Claude가 최근 인수인계 파일을 읽는다
+
+### T-015 Gemini 단독 진행 전환 및 짧은 경로(C:\quant) 안내
+
+- 담당: gemini · 상태: review · 의존: 없음
+- 내용: D-012(Gemini 단독 진행) 확정 추가, `AGENTS.md`·`GEMINI.md` 단독 진행 및 새 대화 교차 리뷰 기준으로 수정, `T-007`·`T-008` 담당을 `gemini`로 변경, `docs/00-start-here.md`와 `ai/PROMPTS.md` 0번 프롬프트에 `C:\quant` 짧은 경로 안내 추가
+- 수락 기준: 4가지 변경 사항 모두 반영 및 `gemini/T-015-gemini-only` 브랜치 푸시, 인수인계 파일 작성
