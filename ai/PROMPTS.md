@@ -17,6 +17,7 @@
 ## 1. 세션 시작 (Claude, Gemini 공통)
 
 ```text
+먼저 GitHub에서 최신 내용을 받아 와(main 기준).
 AGENTS.md를 읽고, ai/handoffs/에서 가장 최근 파일 하나만 읽어.
 그다음 ai/TASKS.md의 T-___ 작업을 시작해.
 작업에 필요한 파일만 읽고, 끝나면 AGENTS.md 5장 형식으로 인수인계 파일을 만들어.
