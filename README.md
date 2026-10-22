@@ -1,6 +1,10 @@
 # 원대 (가칭)
 
-> **비웃지 않는다. 묻는다. "어떻게?"**
+> **선언하라! 행동하라! 달성하라!**
+>
+> 누군가 선언하면, 우리는 비웃지 않는다. 묻는다. **"어떻게?"**
+
+**처음이라면 → [창립자 사용 설명서](docs/00-start-here.md)** (개발 몰라도 됩니다)
 
 원대한 꿈을 진지하게 받아들이는 사람들의 공동체.
 한국인의 경쟁 에너지를 옆 사람이 아닌 세계 최전선으로 돌려, 서로 다른 전문가들이 협력해 불가능해 보이는 일에 도전하게 만든다.
@@ -16,6 +20,8 @@
 | [전략](docs/02-strategy.md) | 제로 투 원 원칙으로 짠 단계별 로드맵, 지표, 수익화, 리스크 | 다음에 무엇을 할지 정할 때 |
 | [공동체 설계](docs/03-community-design.md) | 다섯 가지 규칙, 질문 사다리, "어떻게의 밤" 진행 대본, 원정대 | 모임을 열 때 |
 | [제품 MVP](docs/04-product-mvp.md) | Phase 1에 만들 꿈 아카이브 웹 설계 초안 | 소프트웨어를 만들기 시작할 때 |
+| [첫 10명을 찾을 곳](docs/05-first-ten-scouting.md) | 한국 과학 커뮤니티·행사 조사, 첫 연락 메시지 예시 | 사람을 만나러 갈 때 |
+| [이름 후보 검토](docs/06-naming.md) | 창립자 후보 평가, 새 후보, 충돌 검사, 추천 | 이름을 정할 때 |
 | [꿈 선언서](docs/templates/dream-declaration.md) · [원정대 헌장](docs/templates/expedition-charter.md) | 템플릿 | 꿈을 선언하거나 원정대를 꾸릴 때 |
 | [랜딩 페이지](site/index.html) | 선언문 + 꿈 선언서 작성기 | 사람을 모을 때 |
 
@@ -23,9 +29,12 @@
 
 소프트웨어보다 사람이 먼저다. → [전략 11장](docs/02-strategy.md#11-지금-당장-할-일)
 
-1. 이름 정하기 (가칭 "원대") → `ai/TASKS.md` T-001
-2. 나의 꿈 선언서 쓰기 → T-002
-3. 첫 10명을 위한 후보 20명 적고 1:1로 연락하기 → T-003
+가장 작은 시장은 **나 자신**이다. 내가 먼저 선언하고, 행동하고, 달성한다.
+
+1. 처음 한 번 설정 (5분) → [사용 설명서 1장](docs/00-start-here.md#1-처음-한-번-설정-5분), T-010
+2. 이름 정하기 → [이름 후보 검토](docs/06-naming.md), T-001
+3. 나의 꿈 선언서 쓰고, 90일 공개 도전 시작하기 → T-002, T-009
+4. 과학 커뮤니티에서 사람 만나기 → [첫 10명을 찾을 곳](docs/05-first-ten-scouting.md), T-003
 
 ---
 
@@ -72,9 +81,8 @@ flowchart LR
 
 ### Antigravity에서 시작하기
 
-1. 이 저장소를 내 컴퓨터에 clone 하고 Antigravity에서 폴더를 연다.
-2. 에이전트에게 `ai/PROMPTS.md`의 1번 프롬프트를 붙여 넣는다. `GEMINI.md`가 자동으로 읽히지 않더라도 프롬프트 첫 줄이 `AGENTS.md`를 읽게 한다.
-3. 작업이 끝나면 `gemini/T-___-설명` 브랜치로 푸시하고 PR을 연다.
+1. Antigravity 에이전트에게 `ai/PROMPTS.md`의 **0번 프롬프트**를 붙여 넣는다. 저장소 내려받기와 GitHub 로그인을 에이전트가 단계별로 안내한다.
+2. 그다음부터는 1번 프롬프트로 작업을 시킨다. `GEMINI.md`가 자동으로 읽히지 않더라도 프롬프트 첫 줄이 `AGENTS.md`를 읽게 한다.
 
 ---
 
@@ -86,11 +94,9 @@ flowchart LR
 
 ### 배포
 
-이 저장소는 비공개라서 GitHub Pages를 무료로 쓸 수 없다. 아래 중 하나를 쓴다 (모두 무료).
+GitHub Pages로 자동 배포한다 (`.github/workflows/deploy-site.yml`). `site/`가 바뀌어 `main`에 합쳐질 때마다 갱신된다.
 
-| 방법 | 절차 | 특징 |
-| --- | --- | --- |
-| Netlify Drop | app.netlify.com/drop 에 `site` 폴더를 끌어다 놓기 | 가장 쉽다. 수정할 때마다 다시 올려야 한다 |
-| Vercel / Netlify / Cloudflare Pages | GitHub 저장소 연결 → Root directory: `site` → 빌드 명령 없음 | `main`에 병합할 때마다 자동 배포 |
-
-배포 전에 `site/index.html` 아래쪽 `CONFIG.joinUrl`에 참가 신청 폼 주소를 넣는다. (T-004)
+- 켜는 법: 저장소를 공개로 바꾸고 Pages를 켠다 → [사용 설명서 1장](docs/00-start-here.md#1-처음-한-번-설정-5분)
+- 저장소가 비공개인 동안에는 배포 작업이 자동으로 건너뛰어진다 (무료 플랜의 Pages는 공개 저장소에서만 동작).
+- 주소: https://jeondusan-cloud.github.io/quant/
+- 참가 신청 폼이 생기면 `site/index.html` 아래쪽 `CONFIG.joinUrl`에 주소를 넣는다. (T-004)

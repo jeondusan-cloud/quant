@@ -5,6 +5,15 @@
 
 ---
 
+## 0. Antigravity 처음 한 번 설정
+
+```text
+나는 개발을 모른다. 기술 용어 없이 한 단계씩 안내해 줘.
+1) https://github.com/jeondusan-cloud/quant 저장소를 내 컴퓨터에 내려받아(clone) 그 폴더를 작업 공간으로 열어 줘.
+2) GitHub 로그인이 필요하면 내가 어느 화면에서 무엇을 눌러야 하는지 알려 줘.
+3) 준비가 끝나면 AGENTS.md를 읽고, 네가 이 저장소에서 어떤 규칙으로 일하는지 세 줄로 요약해 줘.
+```
+
 ## 1. 세션 시작 (Claude, Gemini 공통)
 
 ```text
